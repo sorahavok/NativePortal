@@ -1,0 +1,45 @@
+#fb-root
+
+.row-fluid
+	%h2 Login to go on a Foodventure!
+	%script{:type => "text/javascript",:src  => "http://connect.facebook.net/en_US/all.js"}
+
+	%script{:type => "text/javascript"}
+		:plain
+			// Initialize the Facebook JavaScript SDK
+			FB.init({
+				appId: '382092065199468',
+				xfbml: true,
+				status: true,
+				cookie: true,
+			});
+
+			FB.Event.subscribe('auth.login', function () {
+				document.getElementById('newLogin').value = 'true';
+				FB.getLoginStatus(checkLoginStatus);
+			});
+
+			// Check if the current user is logged in and has authorized the app
+			FB.getLoginStatus(checkLoginStatus);
+
+			// Check the result of the user status and display login button if necessary
+			function checkLoginStatus(response) {
+				if(response && response.status == 'connected') {
+
+					// Get the auth key and redirect
+					var accessToken = response.authResponse.accessToken; 
+					console.log('Access Token: ' + accessToken);
+					document.getElementById('authKey').value = accessToken;
+					document.forms["hiddenForm"].submit();
+				}
+			}
+
+	<fb:login-button scope="photo_upload,publish_stream,publish_checkins">
+	Login with Facebook
+	</fb:login-button>
+
+	= form_tag "/foodventures", id: "hiddenForm", method: :post do
+		= hidden_field_tag 'newLogin', 'false'
+		= hidden_field_tag 'authKey'
+
+	#backupStartLocation
