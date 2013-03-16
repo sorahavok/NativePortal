@@ -1,0 +1,14 @@
+<% content_for :title do %>
+  <title>The Native Portal | Home</title>
+<% end %>
+
+<% content_for :Content do %>
+
+  <h1>Editing News</h1>
+
+  <%= render 'form' %>
+
+  <%= link_to 'Show', @test %> |
+  <%= link_to 'Back', tests_path %>
+
+<% end %>
