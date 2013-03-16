@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  <title>The Native Portal | Home</title>
+  <title>The Native Portal | News -  <%= @news.title %></title>
 <% end %>
 
 <% content_for :Content do %>
@@ -7,15 +7,15 @@
 
   <p>
     <b>Title:</b>
-    <%= @test.title %>
+    <%= @news.title %>
   </p>
 
   <p>
     <b>Content:</b>
-    <%= @test.content %>
+    <%= @news.content %>
   </p>
 
 
-  <%= link_to 'Edit', edit_test_path(@test) %> |
-  <%= link_to 'Back', tests_path %>
+  <%= link_to 'Edit', edit_news_path(@news) %> |
+  <%= link_to 'Back', news_path %>
 <% end %>

@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  <title>The Native Portal | Home</title>
+  <title>The Native Portal | News</title>
 <% end %>
 
 <% content_for :Content do %>
@@ -15,19 +15,19 @@
       <th></th>
     </tr>
 
-  <% @tests.each do |test| %>
+  <% @news.each do |news| %>
     <tr>
-      <td><%= test.title %></td>
-      <td><%= test.content %></td>
+      <td><%= news.title %></td>
+      <td><%= news.content %></td>
       <td><%= link_to 'Show', test %></td>
-      <td><%= link_to 'Edit', edit_test_path(test) %></td>
-      <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Edit', edit_test_path(news) %></td>
+      <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </table>
 
   <br />
 
-  <%= link_to 'New Test', new_test_path %>
+  <%= link_to 'New Test', new_news_path %>
 
 <% end %>

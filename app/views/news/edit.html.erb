@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  <title>The Native Portal | Home</title>
+  <title>The Native Portal | Edit - <%=@news.title%></title>
 <% end %>
 
 <% content_for :Content do %>
@@ -8,7 +8,7 @@
 
   <%= render 'form' %>
 
-  <%= link_to 'Show', @test %> |
-  <%= link_to 'Back', tests_path %>
+  <%= link_to 'Show', @news %> |
+  <%= link_to 'Back', news_path %>
 
 <% end %>
