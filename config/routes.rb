@@ -1,5 +1,6 @@
 NativePortal::Application.routes.draw do
-  resources :tests
+
+  resources :news
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,7 +59,7 @@ NativePortal::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
   
-  resources :main, :news, :about, :gaming
+  resources :main, :news, :about, :gaming, :current_events
   
   match "/main" => "main#index"
   root :to => 'main#index'

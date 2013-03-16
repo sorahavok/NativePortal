@@ -1,3 +1,3 @@
 class News < ActiveRecord::Base
-  attr_accessible :article, :title
+  attr_accessible :content, :title, :url
 end

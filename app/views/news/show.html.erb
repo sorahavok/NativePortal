@@ -1,21 +1,20 @@
-<% content_for :title do %>
-  <title>The Native Portal | News -  <%= @news.title %></title>
-<% end %>
+<p id="notice"><%= notice %></p>
 
-<% content_for :Content do %>
-  <p id="notice"><%= notice %></p>
+<p>
+  <b>Title:</b>
+  <%= @news.title %>
+</p>
 
-  <p>
-    <b>Title:</b>
-    <%= @news.title %>
-  </p>
+<p>
+  <b>Content:</b>
+  <%= @news.content %>
+</p>
 
-  <p>
-    <b>Content:</b>
-    <%= @news.article %>
-  </p>
+<p>
+  <b>Url:</b>
+  <%= @news.url %>
+</p>
 
 
-  <%= link_to 'Edit', edit_news_path(@news) %> |
-  <%= link_to 'Back', news_path %>
-<% end %>
+<%= link_to 'Edit', edit_news_path(@news) %> |
+<%= link_to 'Back', news_index_path %>
