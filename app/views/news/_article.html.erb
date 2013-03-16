@@ -1,0 +1,30 @@
+<article>
+  <h3>
+    <% if(abbreviate) %>
+      <%= link_to news.title, news %>
+    <% else %>
+      <%= news.title %>
+    <% end %>
+  </h3>
+  <p>
+   <% words = news.content.split(' ')
+   if(abbreviate && words.length > 100) %>
+    <%= words[0...100].join(' ') %> 
+    ... 
+    <%= link_to '[more]', news %>
+    <% else %>
+    <%= news.content %>
+    <% end %>
+  </p>
+  
+  <% if(news.url.length > 0) %>
+    source: <%= link_to news.url %>
+  <% end %>
+  
+  <div class="text-right">
+    <%= link_to 'Edit', edit_news_path(news) %>
+    <span>&nbsp;&nbsp;</span>
+    <%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</article>
+<hr />
