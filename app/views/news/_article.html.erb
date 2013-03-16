@@ -7,18 +7,17 @@
     <% end %>
   </h3>
   <p>
-   <% words = news.content.split(' ')
-   if(abbreviate && words.length > 100) %>
-    <%= words[0...100].join(' ') %> 
-    ... 
-    <%= link_to '[more]', news %>
+    <% words = news.content.split(' ')
+    if(abbreviate) %>
+      <%= news.getFirst(100) %>  ... 
+      <%= link_to '[more]', news %>
     <% else %>
-    <%= news.content %>
+      <%= news.content.html_safe %>
     <% end %>
   </p>
   
   <% if(news.url.length > 0) %>
-    source: <%= link_to news.url %>
+    source: <%= link_to news.url, news.url %>
   <% end %>
   
   <div class="text-right">

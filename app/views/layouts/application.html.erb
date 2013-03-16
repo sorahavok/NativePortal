@@ -62,8 +62,13 @@
 
       <div class="panel">
         <h5>Featured</h5>
-        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
-        <a href="#">Read More &rarr;</a>
+        <% feat = News.last %>
+        
+        <p>
+          <%=feat.getFirst(50) %>
+          <br />
+          <%=link_to 'Read More', feat%>
+        </p>
       </div>
 
     </aside>
@@ -105,5 +110,6 @@
 <script>
     $(document).foundation().foundation('joyride', 'start');
 </script>
+    <%= tinymce %>
 </html>
 
