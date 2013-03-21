@@ -60,10 +60,12 @@
       </ul>
 
       <div class="panel">
-        <h5>Featured</h5>
+        <h5>Featured:</h5>
         <% feat = Entry.order("updated_at desc").first %>
-        
         <p>
+          <b>
+            <%=link_to feat.title, feat%>
+          </b>
           <%=feat.getFirst(50) %>
           <br />
           <%=link_to 'Read More', feat%>
@@ -87,30 +89,14 @@
         <div class="large-6 columns">
           <p>&copy; Copyright Sora Havok</p>
         </div>
-        <!--
-        <div class="large-6 columns">
-          <ul class="inline-list right">
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
-          </ul>
-        </div>
-        -->
       </div>
     </div>
   </footer>
-
-  
 
   <!-- End Footer -->
 </body>
 
 <%= javascript_include_tag :application %>
-
-<script>
-    $(document).foundation().foundation('joyride', 'start');
-</script>
-    <%= tinymce %>
+<%= tinymce %>
 </html>
 

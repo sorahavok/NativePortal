@@ -11,34 +11,78 @@
     </div>
   <% end %>
   
-  <div class="field" style="padding-bottom:40px">
-    <%= f.label "Choose a Section:" %>
-    <br />
-    <% Section.all.each do |sec| %>
-      <div class="left" style="padding-right:30px">
-      <%= f.label "#{:section_id}_#{sec.id}", sec.title %>
-      <%= f.radio_button :section_id, sec.id, checked: @entry.nil? || @entry.section == sec %>
+   <div class="row" style="padding-bottom:40px;">
+    <div class="four columns">
+      <div class="row collapse">
+        <div class="two columns">
+          <span class="prefix">
+            <%= f.label "Choose a Section:" %>
+          </span>
+        </div>
+        <div class="ten mobile-three columns">
+          <% Section.all.each do |sec| %>
+            <div class="left" style="padding-right:30px">
+            <%= f.label "#{:section_id}_#{sec.id}", sec.title %>
+            <%= f.radio_button :section_id, sec.id, checked: @entry.nil? || @entry.section == sec %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
+    </div>
+  </div>
+  
+  
+
+
+  <div class="row">
+    <div class="four columns">
+      <div class="row collapse">
+        <div class="two columns">
+          <span class="prefix">
+            <%= f.label :title %>
+          </span>
+        </div>
+        <div class="ten mobile-three columns">
+          <%= f.text_field :title %>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <br />
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <div class="row">
+    <div class="four columns">
+      <div class="row collapse">
+        <div class="two columns">
+          <span class="prefix">
+            <%= f.label :author %>
+          </span>
+        </div>
+        <div class="ten mobile-three columns">
+          <%= f.text_field :author %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :author %><br />
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
+
+  <div class="row">
+    <div class="four columns">
+      <div class="row collapse">
+        <div class="two columns">
+          <span class="prefix">
+            <%= f.label :url %>
+          </span>
+        </div>
+        <div class="ten mobile-three columns">
+          <%= f.text_field :url %>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="field">
     <%= f.label :content %><br />
     <%= f.text_area :content, :class => "tinymce", :rows => 140, :cols => 120 %>
   </div>
+  <br />
   <div class="actions">
     <%= f.submit %>
   </div>
