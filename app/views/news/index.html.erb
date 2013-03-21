@@ -1,9 +1,0 @@
-<h1 class="text-center">News</h1>
-
-<% @news.each do |news| %>
-  <%= render 'article', news: news, abbreviate: true %>
-<% end %>
-
-<br />
-
-<%= link_to 'New News', new_news_path %>

@@ -1,0 +1,9 @@
+<h1 class="text-center">News</h1>
+
+<% @entries.each do |entry| %>
+  <%= render 'entries/article', entry: entry, abbreviate: true %>
+<% end %>
+
+<br />
+
+<%= link_to 'New News', new_entry_path %>

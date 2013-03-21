@@ -1,0 +1,34 @@
+<article>
+  <h3>
+    <% if(abbreviate) %>
+      <%= link_to entry.title, entry %>
+    <% else %>
+      <%= entry.title %>
+    <% end %>
+  </h3>
+
+  <h4>
+    <%= entry.section.title %>
+  </h4>
+  
+  <p>
+    <% words = entry.content.split(' ')
+    if(abbreviate) %>
+      <%= entry.getFirst(100) %>  ... 
+      <%= link_to '[more]', entry %>
+    <% else %>
+      <%= entry.content.html_safe %>
+    <% end %>
+  </p>
+  
+  <% if(!entry.url.nil?) %>
+    source: <%= link_to entry.url, entry.url %>
+  <% end %>
+  
+  <div class="text-right">
+    <%= link_to 'Edit', edit_entry_path(entry) %>
+    <span>&nbsp;&nbsp;</span>
+    <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</article>
+<hr />

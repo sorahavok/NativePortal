@@ -1,7 +1,8 @@
-class News < ActiveRecord::Base
-  attr_accessible :content, :title, :url
+class Entry < ActiveRecord::Base
+  belongs_to :section
+  attr_accessible :content, :title, :url, :section_id
   
-  def getFirst(n)
+    def getFirst(n)
     words = content.split(' ')
     if(words.length > n)
       words[0...n].join(' ').html_safe
@@ -9,4 +10,5 @@ class News < ActiveRecord::Base
       content.html_safe
     end
   end
+  
 end

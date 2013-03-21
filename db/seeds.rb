@@ -5,4 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-News.create(:title => 'New Title', :content => "This is Content")
+
+news = Section.create(title: 'News')
+hist = Section.create(title: 'History')
+
+Entry.create(section: news, title: 'News Title #1', content: "News Content 1")
+Entry.create(section: news, title: 'News Title #2', content: "News Content 2")
+
+Entry.create(section: hist, title: 'History Title #1', content: "History Content 1")
+Entry.create(section: hist, title: 'History Title #2', content: "History Content 2")
+

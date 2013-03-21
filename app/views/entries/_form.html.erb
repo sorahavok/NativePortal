@@ -1,31 +1,35 @@
-<%= form_for(@news) do |f| %>
-  <% if @news.errors.any? %>
+<%= form_for(@entry) do |f| %>
+  <% if @entry.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
+      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
 
       <ul>
-      <% @news.errors.full_messages.each do |msg| %>
+      <% @entry.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
+  
+  <div class="field">
+    <% Section.all.each do |sec| %>
+    <br />
+    <%= f.radio_button :section_id, sec.id, checked: @post.nil? || @post.section == sec %>
+    <%= f.label sec.title %>
+    <% end %> 
+  </div>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <br />
   <div class="field">
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
-  <br />
   <div class="field">
     <%= f.label :content %><br />
     <%= f.text_area :content, :class => "tinymce", :rows => 140, :cols => 120 %>
   </div>
-  <br />
   <div class="actions">
     <%= f.submit %>
   </div>

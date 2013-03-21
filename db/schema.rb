@@ -11,12 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316161034) do
+ActiveRecord::Schema.define(:version => 20130320231912) do
+
+  create_table "entries", :force => true do |t|
+    t.integer  "section_id"
+    t.string   "title"
+    t.string   "url"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "entries", ["section_id"], :name => "index_entries_on_section_id"
 
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "section_id"
+    t.string   "title"
+    t.string   "url"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "posts", ["section_id"], :name => "index_posts_on_section_id"
+
+  create_table "sections", :force => true do |t|
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

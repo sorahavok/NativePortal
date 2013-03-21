@@ -20,11 +20,9 @@
       <div class="nav-bar right">
         <ul class="button-group">
           <li><%=link_to "Home", :main_index, { :class=>"button"}%></li>
-          <li><%=link_to "News", :news_index, { :class=>"button"}%></li>
-          <li><%=link_to "History", :main_index, { :class=>"button"}%></li>
-          <li><%=link_to "Religion", :main_index, { :class=>"button"}%></li>
-          <li><%=link_to "Economics", :main_index, { :class=>"button"}%></li>
-          <li><%=link_to "Myths", :main_index, { :class=>"button"}%></li> 
+          <% Section.all.each do |sec| %>
+            <li><%= link_to sec.title, sec, { :class=>"button"}%></li>
+          <% end %>
         </ul>
       </div>
       <h1><%=link_to "Native Gaming Portal", :main_index%></h1>
@@ -53,16 +51,14 @@
 
       <h5>Categories</h5>
       <ul class="side-nav">
-        <li><a href="#">News</a></li>
-        <li><a href="#">Code</a></li>
-        <li><a href="#">Design</a></li>
-        <li><a href="#">Fun</a></li>
-        <li><a href="#">Weasels</a></li>
+        <% Section.all.each do |sec| %>
+          <li><%= link_to sec.title, sec %></li>
+        <% end %>
       </ul>
 
       <div class="panel">
         <h5>Featured</h5>
-        <% feat = News.last %>
+        <% feat = Entry.last %>
         
         <p>
           <%=feat.getFirst(50) %>
