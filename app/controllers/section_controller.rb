@@ -1,6 +1,7 @@
 class SectionController < ApplicationController
   def show
     @section = Section.find(params[:id])
+    @title = @section.title
     @entries = Entry.find_all_by_section_id(@section)   
     
     respond_to do |format|

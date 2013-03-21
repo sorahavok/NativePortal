@@ -17,7 +17,7 @@
     <% Section.all.each do |sec| %>
       <div class="left" style="padding-right:30px">
       <%= f.label "#{:section_id}_#{sec.id}", sec.title %>
-      <%= f.radio_button :section_id, sec.id, checked: @post.nil? || @post.section == sec %>
+      <%= f.radio_button :section_id, sec.id, checked: @entry.nil? || @entry.section == sec %>
       </div>
     <% end %>
   </div>

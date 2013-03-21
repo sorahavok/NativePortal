@@ -14,7 +14,7 @@ class EntriesController < ApplicationController
   # GET /entries/1.json
   def show
     @entry = Entry.find(params[:id])
-
+    @title = "#{@entry.section.title} - #{@entry.title}"
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @entry }
@@ -57,10 +57,10 @@ class EntriesController < ApplicationController
   # PUT /entries/1.json
   def update
     @entry = Entry.find(params[:id])
- #   params[:entry][:section] = Section.find_by_title(params[:entry][:section])
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
-        format.html { redirect_to :controller=>'section', :action => 'show', :id => @entry.section, notice: 'Entry was successfully updated.' }
+       format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
+        #format.html { redirect_to :controller=>'section', :action => 'show', :id => @entry.section, notice: 'Entry was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
