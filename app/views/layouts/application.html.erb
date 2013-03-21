@@ -58,7 +58,7 @@
 
       <div class="panel">
         <h5>Featured</h5>
-        <% feat = Entry.last %>
+        <% feat = Entry.order("updated_at desc").first %>
         
         <p>
           <%=feat.getFirst(50) %>

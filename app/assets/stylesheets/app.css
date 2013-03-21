@@ -13,21 +13,7 @@
    Shared Styles
 ----------------------------------------- */
 
-
-
-/* -----------------------------------------
-   Foodventure/Index
------------------------------------------ */
-input + label {
-  display: inline;
+.text-underline {
+  text-decoration:underline;
 }
-
-label + input {
-  margin-top: 25px;
-}
-
-/* -----------------------------------------
-   Page Name 2
------------------------------------------ */
-
 

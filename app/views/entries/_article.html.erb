@@ -6,14 +6,14 @@
       <%= entry.title %>
     <% end %>
   </h3>
-
-  <h4>
-    <%= entry.section.title %>
-  </h4>
+  <h5>
+    By <%=entry.author %>
+  </h5>
+ 
   
   <p>
     <% words = entry.content.split(' ')
-    if(abbreviate) %>
+    if(abbreviate && words.length>100) %>
       <%= entry.getFirst(100) %>  ... 
       <%= link_to '[more]', entry %>
     <% else %>
@@ -21,9 +21,12 @@
     <% end %>
   </p>
   
-  <% if(!entry.url.nil?) %>
-    source: <%= link_to entry.url, entry.url %>
+  <% if(!entry.url.nil? && entry.url.length > 0) %>
+    Source: <%= link_to entry.url, entry.url %>
+    <br />
   <% end %>
+  
+  
   
   <div class="text-right">
     <%= link_to 'Edit', edit_entry_path(entry) %>

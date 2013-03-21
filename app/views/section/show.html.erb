@@ -1,4 +1,4 @@
-<h1 class="text-center"><%= @section.title %></h1>
+<h2 class="text-center"><%= @section.title %></h2>
 
 <% @entries.each do |entry| %>
   <%= render 'entries/article', entry: entry, abbreviate: true %>

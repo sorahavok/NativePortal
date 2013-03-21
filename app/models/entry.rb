@@ -1,6 +1,6 @@
 class Entry < ActiveRecord::Base
   belongs_to :section
-  attr_accessible :content, :title, :url, :section_id
+  attr_accessible :content, :title, :url, :section_id, :author
   
     def getFirst(n)
     words = content.split(' ')

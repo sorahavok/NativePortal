@@ -11,16 +11,25 @@
     </div>
   <% end %>
   
-  <div class="field">
-    <% Section.all.each do |sec| %>
+  <div class="field" style="padding-bottom:40px">
+    <%= f.label "Choose a Section:" %>
     <br />
-    <%= f.radio_button :section_id, sec.id, checked: @post.nil? || @post.section == sec %>
-    <%= f.label sec.title %>
-    <% end %> 
+    <% Section.all.each do |sec| %>
+      <div class="left" style="padding-right:30px">
+      <%= f.label "#{:section_id}_#{sec.id}", sec.title %>
+      <%= f.radio_button :section_id, sec.id, checked: @post.nil? || @post.section == sec %>
+      </div>
+    <% end %>
   </div>
+
+  <br />
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :author %><br />
+    <%= f.text_field :author %>
   </div>
   <div class="field">
     <%= f.label :url %><br />
