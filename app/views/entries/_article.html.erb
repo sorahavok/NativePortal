@@ -27,11 +27,14 @@
   <% end %>
   
   <br />
-  
+  <% if user? %>
   <div class="text-right">
     <%= link_to 'Edit', edit_entry_path(entry) %>
-    <span>&nbsp;&nbsp;</span>
-    <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if admin? %>
+      <span>&nbsp;&nbsp;</span>
+      <%= link_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
+  <% end %>
 </article>
 <hr />

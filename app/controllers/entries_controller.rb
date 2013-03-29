@@ -35,6 +35,9 @@ class EntriesController < ApplicationController
   # GET /entries/1/edit
   def edit
     @entry = Entry.find(params[:id])
+    unless authorize_user
+      redirect_to @entry
+    end
   end
 
   # POST /entries
@@ -57,6 +60,11 @@ class EntriesController < ApplicationController
   # PUT /entries/1.json
   def update
     @entry = Entry.find(params[:id])
+  
+    unless authorize_user
+      redirect_to @entry
+    end
+      
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
@@ -74,10 +82,11 @@ class EntriesController < ApplicationController
   def destroy
     @entry = Entry.find(params[:id])
     section = @entry.section
+    unless authorize_admin
+      redirect_to @entry
+    end
+    
     @entry.destroy
-
-    
-    
     respond_to do |format|
       format.html { redirect_to :controller=>'section', :action => 'show', :id => section }
       format.json { head :no_content }

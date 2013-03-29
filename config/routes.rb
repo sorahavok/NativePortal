@@ -53,7 +53,11 @@ NativePortal::Application.routes.draw do
 
   # See how all your routes lay out with "rake routes"
   
-  resources :main, :news, :gaming, :section, :post, :entries
+  match 'login', :controller => 'users', :action => 'new'
+  match 'logout', :controller => 'users', :action => 'destroy'
+  
+  resources :main, :news, :gaming, :section, :post, :entries, :users
   match "/main" => "main#index"
+  
   root :to => 'main#index'
 end

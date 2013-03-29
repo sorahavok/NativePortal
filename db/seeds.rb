@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create(name: 'admin', password:'add') #!datProf4Hist
+User.create(name: 'student', password:'stud') #H1I0U8Sb
+
 news = Section.create(title: 'News')
 hist = Section.create(title: 'History')
 econ = Section.create(title: 'Economics')

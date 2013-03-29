@@ -42,6 +42,14 @@
 
     <!-- Main Blog Content -->
     <div class="large-9 columns" role="content">
+      
+      <% if flash[:error] %>
+        <div class="error alert-box alert text-center"><%=h flash[:error] %></div>
+      <% end %>
+      <% if flash[:notice] %>
+        <div class="notice alert-box text-center success"><%=h flash[:notice] %></div>
+      <% end %>
+      
       <%= yield %>
     </div>
 
