@@ -21,7 +21,7 @@
   <div class="row">
     <div class="large-12 columns">
       <%= link_to image_tag("banner.png", { :class=>"left"}), :main_index %>
-      <div class="nav-bar right">
+      <div class="nav-bar left clear">
         <ul class="button-group">
           <li><%=link_to "Home", :main_index, { :class=>"button"}%></li>
           <% Section.all.each do |sec| %>
@@ -29,8 +29,18 @@
           <% end %>
         </ul>
       </div>
-      <hr />
+    <span class="right">
+      <% if user?%>
+        <%=link_to "Logout", :logout, { :class=>"small success button"}%>
+        <br />
+        Hi <%=get_user.name %>!
+      <% else %>
+        <%=link_to "Login", :login, { :class=>"small success button"}%>
+      <% end %>
+     </span>
+    <hr />
     </div>
+     
   </div>
 
   <!-- End Nav -->

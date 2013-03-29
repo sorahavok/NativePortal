@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   #session :session_key => '_sora_havok_session'
   
-  helper_method :admin?, :user?
+  helper_method :admin?, :user?, :get_user
   
   def authorize_user
     unless user?
@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
   
   def user?
     !session[:uid].nil?
+  end
+  
+  def get_user
+    User.find(session[:uid])
   end
   
   
