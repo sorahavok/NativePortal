@@ -14,13 +14,14 @@ class ApplicationController < ActionController::Base
   def authorize_admin
     unless admin?
       flash[:error] = "Unauthorized Access"
+      #"#{User.find_by_name("admin").id} vs #{session[:uid].to_i} #{User.find_by_name("admin").id == session[:uid].to_i}"
     end
     admin?
   end
   
   
   def admin?
-    session[:uid] == User.find_by_name("admin").id
+    session[:uid].to_i == User.find_by_name("admin").id
   end
   
   def user?

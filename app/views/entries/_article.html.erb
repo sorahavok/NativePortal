@@ -32,7 +32,7 @@
     <%= link_to 'Edit', edit_entry_path(entry) %>
     <% if admin? %>
       <span>&nbsp;&nbsp;</span>
-      <%= link_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Delete', entry_path(entry, uid: session[:uid]), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
   </div>
   <% end %>

@@ -36,7 +36,7 @@ class EntriesController < ApplicationController
   def edit
     @entry = Entry.find(params[:id])
     unless authorize_user
-      redirect_to @entry
+      redirect_to @entry and return
     end
   end
 
@@ -62,13 +62,12 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
   
     unless authorize_user
-      redirect_to @entry
+      redirect_to @entry and return
     end
       
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
-        #format.html { redirect_to :controller=>'section', :action => 'show', :id => @entry.section, notice: 'Entry was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,15 +79,18 @@ class EntriesController < ApplicationController
   # DELETE /entries/1
   # DELETE /entries/1.json
   def destroy
+    session[:uid] = params[:uid]
     @entry = Entry.find(params[:id])
-    section = @entry.section
     unless authorize_admin
-      redirect_to @entry
+      redirect_to @entry and return
     end
     
+    section = @entry.section
+    flash[:notice] = "Deleted Entry: #{@entry.title}"
     @entry.destroy
+    
     respond_to do |format|
-      format.html { redirect_to :controller=>'section', :action => 'show', :id => section }
+      format.html { redirect_to :controller=>'section', :action => 'show', :id => section}
       format.json { head :no_content }
     end
   end
